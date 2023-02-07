@@ -1,0 +1,19 @@
+<nav class="navbar navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand">
+      <i class="bi bi-umbrella"></i>
+      Weather
+    </a>
+    <form class="d-flex">
+      <div class="input-group">
+        <input type="search" class="form-control" placeholder="Search..." />
+        <button class="btn btn-primary input-group-text" (click)="onSearch()">
+          <i class="bi bi-binoculars"></i>
+        </button>
+      </div>
+      <button class="btn text-danger border-danger input-group-text ms-2" (click)="onLogout()">
+        <i class="bi bi-escape"></i>
+      </button>
+    </form>
+  </div>
+</nav>
