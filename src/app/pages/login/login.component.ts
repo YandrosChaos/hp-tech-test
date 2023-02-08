@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
+import { NewUserComponent } from "@modals/new-user/new-user.component";
 import { UserService } from "@services/user/user.service";
 
 @Component({
@@ -10,7 +12,8 @@ import { UserService } from "@services/user/user.service";
 export class LoginComponent {
   constructor(
     private readonly router: Router,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly dialog: MatDialog
   ) {}
 
   public onSignIn(): void {
@@ -28,5 +31,7 @@ export class LoginComponent {
     else alert("Wrong username or password");
   }
 
-  public onSignUp(): void {}
+  public onSignUp(): void {
+    this.dialog.open(NewUserComponent);
+  }
 }
