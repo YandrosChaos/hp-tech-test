@@ -1,0 +1,21 @@
+<div class="vertical-form-field">
+  <div>
+    <mat-form-field>
+      <input
+        type="search"
+        placeholder="Search..."
+        matInput
+        [formControl]="formControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let city of filteredCities | async"
+          [value]="city.name"
+        >
+          {{ city.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+</div>

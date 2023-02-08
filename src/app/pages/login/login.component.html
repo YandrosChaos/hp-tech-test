@@ -22,7 +22,11 @@
       </div>
     </form>
     <div class="row mt-5">
-      <button class="btn btn-primary col mx-3" (click)="onSignIn()">
+      <button
+        class="btn btn-primary col mx-3"
+        (click)="onSignIn()"
+        [disabled]="!loginForm.valid"
+      >
         Sign in
       </button>
       <button class="btn btn-secondary col mx-3" (click)="onSignUp()">
