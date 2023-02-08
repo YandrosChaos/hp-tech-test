@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
 <div class="mx-5 px-5 mt-1">
   <h1 class="text-center w-100">Liked Cities</h1>
-  <app-item></app-item>
+  <div *ngIf="favCities$">
+    <app-item *ngFor="let city of favCities$ | async" [city]="city"></app-item>
+  </div>
 </div>

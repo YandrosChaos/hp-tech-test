@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { City } from "@interfaces/city.interface";
 import { CityService } from "@services/city/city.service";
+import { FavCityService } from "@services/city/fav-city.service";
 import { map, Observable, of, startWith } from "rxjs";
 
 @Component({
@@ -14,7 +15,10 @@ export class TypeaheadComponent implements OnInit {
   public availableCities: City[];
   public filteredCities: Observable<City[]>;
 
-  constructor(private readonly cityService: CityService) {}
+  constructor(
+    private readonly cityService: CityService,
+    private readonly favCityService: FavCityService
+  ) {}
 
   ngOnInit(): void {
     this.availableCities = this.cityService.getAll();
@@ -22,6 +26,17 @@ export class TypeaheadComponent implements OnInit {
       startWith(""),
       map((value) => this.filter(value))
     );
+  }
+
+  public likedCity(): void {
+    const foundedCity = this.availableCities.find(
+      (c) => c.name === this.formControl.value
+    );
+    if (foundedCity) {
+      this.favCityService.updateOne(foundedCity, "id");
+    } else {
+      alert("City not found");
+    }
   }
 
   private filter(value: string): City[] {

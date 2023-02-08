@@ -7,11 +7,12 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { UserService } from "@services/user/user.service";
 import { AuthGuard } from "@guards/auth.guard";
 import { CityService } from "@services/city/city.service";
+import { FavCityService } from "@services/city/fav-city.service";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
-  providers: [UserService, CityService, AuthGuard],
+  providers: [UserService, CityService, FavCityService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

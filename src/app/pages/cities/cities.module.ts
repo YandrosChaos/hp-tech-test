@@ -1,3 +1,4 @@
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ItemModule } from "@components/item/item.module";
@@ -12,7 +13,12 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [CitiesComponent],
-  imports: [RouterModule.forChild(routes), NavbarModule, ItemModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    NavbarModule,
+    ItemModule,
+  ],
   providers: [],
 })
 export class CitiesModule {}
