@@ -1,11 +1,14 @@
-import { CanActivate } from "@angular/router";
+import { CanActivate, Router } from "@angular/router";
 import { User } from "@interfaces/user.interface";
 import { UserService } from "@services/user/user.service";
 import { Injectable } from "@angular/core";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly router: Router
+  ) {}
 
   canActivate(): boolean {
     const sessionUser: User = this.userService.sessionUser;
@@ -18,6 +21,7 @@ export class AuthGuard implements CanActivate {
       return true;
 
     alert("Unauthorized!");
+    this.router.navigate(["/login"]);
     return false;
   }
 }
