@@ -35,7 +35,6 @@ export class NewUserComponent {
   public newUserForm: FormGroup = this.fb.group({
     username: ["", Validators.required],
     password: ["", Validators.required],
-    repeatedPassword: ["", Validators.required],
   });
 
   public get username(): string {
@@ -46,7 +45,7 @@ export class NewUserComponent {
     return this.newUserForm.get("password").value;
   }
 
-  matcher = new MyErrorStateMatcher();
+  public matcher = new MyErrorStateMatcher();
 
   constructor(
     private readonly fb: FormBuilder,

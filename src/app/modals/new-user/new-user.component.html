@@ -33,22 +33,6 @@
         Password is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-
-    <!-- password 2 -->
-    <mat-form-field class="w-100">
-      <input
-        matInput
-        placeholder="Repeat password"
-        formControlName="repeatedPassword"
-        [errorStateMatcher]="matcher"
-        type="password"
-      />
-      <mat-error
-        *ngIf="newUserForm.get('repeatedPassword').hasError('required')"
-      >
-        Repeated password is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
   </form>
 </mat-dialog-content>
 
